@@ -32,10 +32,10 @@ Installation
 To view or run this portfolio website locally:
 
 Clone the repository:
-git clone https://github.com/Varsush/Varsha-Portfolio.git
+(https://github.com/Varsush/Resume-Website.git)
 
 Navigate to the project directory:
-cd Varsha-Portfolio
+cd Resume-website
 
 Open the index.html file in your preferred web browser.
 
