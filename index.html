@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varsha Hegde | Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- 1. Custom Cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- 2. Animated Starry Background -->
+    <div class="galaxy-background"></div>
+
+    <!-- 3. Page Content Wrapper for Fade Transition -->
+    <div id="page-wrapper">
+      <header>
+        <div class="container">
+          <nav>
+            <ul>
+              <!-- Navigation Links with Icons -->
+              <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="resume.html"
+                  ><i class="fas fa-user-astronaut"></i> Resume</a
+                >
+              </li>
+              <li>
+                <a href="biodata.html"
+                  ><i class="fas fa-microchip"></i> Biodata</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><i class="fas fa-envelope"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="container">
+        <section id="hero">
+          <!-- Profile Picture (NEW ADDITION) -->
+          <div
+            class="profile-picture"
+            style="
+              animation-delay: 0.1s;
+              width: 50px;
+              height: 100px;
+              margin-bottom: 110px;
+            "
+          >
+            <img
+              src="myprofile.jpg"
+              alt="Varsha Hegde Profile Picture"
+              onerror="this.onerror=null;this.src='https://placehold.co/400x400/8B5CF6/0D0A2C?text=Profile';"
+            />
+          </div>
+
+          <!-- Glowing Title -->
+          <h1>VARSHA HEGDE</h1>
+
+          <!-- Tagline -->
+          <p class="tagline">
+            Passionate Computer Science Engineer with a love for clean code and
+            creative problem-solving. Exploring technology that makes life
+            simpler and smarter.
+          </p>
+          <!-- Animated Glowing Buttons -->
+          <div class="hero-buttons">
+            <a href="resume.html" class="btn-resume">View Resume</a>
+            <a href="biodata.html" class="btn-bio">View Bio-data</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>© 2025 Varsha Hegde | Grace in Dance, Logic in Code.</footer>
+    </div>
+    
+  </body>
+</html>

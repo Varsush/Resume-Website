@@ -1,0 +1,424 @@
+/* --- Imports and Variables --- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap");
+
+:root {
+  --color-primary: #c7c9d0; /* Royal Blue */
+  --color-secondary: #c4bcd8; /* Purple */
+  --color-background: #38364d; /* Deep Space Blue/Black */
+  --color-text: #e0e0e0; /* Light Gray Text */
+  --color-highlight: #a0c4ff; /* Soft Neon Glow */
+  --font-stack: "Poppins", sans-serif;
+}
+
+/* --- Base & Body --- */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-stack);
+  line-height: 1.6;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+  cursor: none !important; /* Hide default cursor */
+}
+
+/* --- Container and Layout --- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
+  position: relative;
+  z-index: 10; /* Ensure content is above background */
+}
+
+/* --- Background (Stars/Galaxy) --- */
+.galaxy-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Subtle radial gradient for depth */
+  background: radial-gradient(
+    circle at center,
+    #1a0f47 0%,
+    var(--color-background) 80%
+  );
+  overflow: hidden;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  /* Animation: Subtle, slow shimmer */
+  animation: shimmer 10s infinite ease-in-out alternate;
+}
+
+/* Dynamically generated stars will use these classes: */
+.star-small {
+  width: 1px;
+  height: 1px;
+}
+.star-medium {
+  width: 2px;
+  height: 2px;
+}
+.star-large {
+  width: 3px;
+  height: 3px;
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+/* --- Page Transition Wrapper (Important for Fade) --- */
+#page-wrapper {
+  min-height: 100vh;
+  opacity: 0; /* Starts hidden, fades in via JS */
+  transition: opacity 0.5s ease-out;
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Header and Footer --- */
+header {
+  background-color: rgba(13, 10, 44, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(5px);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+header li {
+  display: inline;
+  margin: 0 20px;
+}
+
+header a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+header a:hover {
+  color: var(--color-highlight);
+  text-shadow: 0 0 5px var(--color-highlight);
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.8em;
+  color: rgba(224, 224, 224, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Home Page (index.html) Styling --- */
+/* --- Hero Section --- */
+#hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 0;
+}
+
+/* --- Profile Picture (Centered & Small) --- */
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.profile-picture img {
+  width: 270px; /* increased from 120px → 170px */
+  height: 300px;
+  border-radius: 10%;
+  object-fit: cover;
+  border: 4px solid rgba(139, 92, 246, 0.7); /* slightly brighter glow */
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.8);
+}
+
+/* --- Hero Title --- */
+#hero h1 {
+  font-size: clamp(2.5em, 1vw, 5em); /* Responsive font size */
+  font-weight: 400;
+  margin-bottom: 0.1em;
+  color: var(--color-text);
+  /* Neon Glow Effect */
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-highlight),
+    0 0 30px var(--color-primary);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-highlight);
+  }
+  100% {
+    text-shadow: 0 0 15px var(--color-highlight), 0 0 30px var(--color-primary);
+  }
+}
+
+/* --- Tagline --- */
+#hero .tagline {
+  font-size: clamp(1em, 3vw, 1.5em);
+  font-weight: 400;
+  color: var(--color-highlight);
+  margin-bottom: 25px;
+}
+
+/* --- Glowing Buttons --- */
+.hero-buttons a {
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 15px;
+  margin:  15px;
+  border-radius: 40px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid;
+  display: inline-block;
+}
+
+.hero-buttons .btn-resume {
+  background: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+
+.hero-buttons .btn-resume:hover {
+  background: transparent;
+  color: var(--color-highlight);
+  box-shadow: 0 0 15px var(--color-highlight);
+}
+
+.hero-buttons .btn-bio {
+  background: var(--color-secondary);
+  color: var(--color-background);
+  border-color: var(--color-secondary);
+}
+
+.hero-buttons .btn-bio:hover {
+  background: transparent;
+  color: var(--color-secondary);
+  box-shadow: 0 0 15px var(--color-secondary);
+}
+
+/* --- Content Cards (Glassmorphism) --- */
+.card-section {
+  padding: 30px;
+  margin-bottom: 30px;
+  /* Glassmorphism Effect */
+  background: rgba(45, 45, 70, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  /* Initial state for cinematic entry */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-section:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 0 0 10px rgba(65, 105, 225, 0.5); /* Subtle lift and glow */
+}
+
+h2 {
+  color: var(--color-highlight);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.entry-list li {
+  background: rgba(65, 105, 225, 0.1);
+  margin-bottom: 8px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+  transition: background 0.3s;
+}
+
+.entry-list li:hover {
+  background: rgba(65, 105, 225, 0.2);
+}
+
+.skill-tag {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: #870a0a;
+  padding: 6px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 400;
+  transition: transform 0.2s;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* --- Form Styling (For Contact Page) --- */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block; /* Ensures label takes its own line */
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-primary); /* Highlight labels */
+}
+
+/* CRITICAL FIX: Form inputs now take 100% of the container width */
+.card-section input[type="text"],
+.card-section input[type="email"],
+.card-section textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Darker background for input fields for contrast */
+  color: var(--color-text);
+  border-radius: 8px;
+  font-family: var(--font-stack);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box; /* Ensures padding doesn't push width over 100% */
+}
+
+.card-section input[type="text"]:focus,
+.card-section input[type="email"]:focus,
+.card-section textarea:focus {
+  border-color: var(--color-highlight);
+  box-shadow: 0 0 10px rgba(160, 196, 255, 0.5); /* Glowing focus effect */
+  outline: none;
+}
+
+.card-section textarea {
+  resize: vertical;
+  min-height: 150px; /* Gives plenty of space for the message */
+}
+
+/* Style for the Send Message button to match the portfolio theme */
+.card-section input[type="submit"] {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 15px 35px;
+  margin-top: 10px;
+  border-radius: 50px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--color-secondary);
+  background: var(--color-secondary);
+  color: var(--color-background);
+}
+
+.card-section input[type="submit"]:hover {
+  background: transparent;
+  color: var(--color-secondary);
+  box-shadow: 0 0 15px var(--color-secondary);
+}
+
+/* Biodata specific layout (Grid for two columns) */
+.biodata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.data-card {
+  background: rgba(139, 92, 246, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 5px solid var(--color-secondary);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.data-card:hover {
+  box-shadow: 0 0 20px var(--color-secondary);
+  transform: translateY(-3px);
+}
+
+.data-card strong {
+  color: var(--color-highlight);
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+/* --- General Animations --- */
+@keyframes fadeInSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 600px) {
+  header li {
+    margin: 0 10px;
+  }
+  .hero-buttons a {
+    display: block;
+    margin: 15px auto;
+  }
+  .biodata-grid {
+    grid-template-columns: 1fr;
+  }
+}
+body {
+  cursor: default !important;
+}

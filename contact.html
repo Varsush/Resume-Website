@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varsha Hegde | Contact</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Ensure script.js is loaded for cursor and transition effects -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- 1. Custom Cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- 2. Animated Starry Background -->
+    <div class="galaxy-background"></div>
+
+    <!-- 3. Page Content Wrapper for Fade Transition -->
+    <div id="page-wrapper">
+      <header>
+        <div class="container">
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="resume.html">Resume</a></li>
+              <li><a href="biodata.html">Bio-data</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="container">
+        <h1>Connect with Me</h1>
+
+        <!-- Direct Contact Details Card -->
+        <section class="card-section" style="animation-delay: 0.2s">
+          <h2>Direct Communication</h2>
+          <p>
+            I am actively seeking internship and research opportunities. Please
+            feel free to reach out directly via phone or email for professional
+            inquiries.
+          </p>
+          <div class="biodata-grid">
+            <div class="data-card">
+              <strong>Email Address</strong>
+              <p>
+                <a
+                  href="mailto:varsushhegde07@gmail.com"
+                  style="color: var(--color-highlight); text-decoration: none"
+                  >varsushhegde07@gmail.com</a
+                >
+              </p>
+            </div>
+            <div class="data-card">
+              <strong>Mobile Contact</strong>
+              <p>
+                <a
+                  href="tel:+919449327665"
+                  style="color: var(--color-highlight); text-decoration: none"
+                  >+91 9449327665</a
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Professional Network Card -->
+        <section class="card-section" style="animation-delay: 0.4s">
+          <h2>Professional Networks</h2>
+          <div class="biodata-grid">
+            <div class="data-card">
+              <strong>LinkedIn Profile</strong>
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/varsha-hegde-072005s"
+                  target="_blank"
+                  style="color: var(--color-secondary); text-decoration: none"
+                  >/in/varsha-hegde-072005s</a
+                >
+              </p>
+            </div>
+            <div class="data-card">
+              <strong>Github Profile</strong>
+              <p>
+                <a
+                  href="https://github.com/Varsush"
+                  target="_blank"
+                  style="color: var(--color-secondary); text-decoration: none"
+                  >/VarshaHegde</a
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Placeholder Contact Form (Styling hooks included) -->
+        <section
+          class="card-section contact-form-section"
+          style="animation-delay: 0.6s"
+        >
+          <h2>Send a Transmission</h2>
+          <p>
+            Use the form below to send a quick message, and I'll get back to you
+            as soon as possible.
+          </p>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="user_name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="user_email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-resume">Send Message</button>
+          </form>
+        </section>
+
+        <!-- Back Button -->
+        <div class="hero-buttons" style="text-align: center; margin-top: 50px">
+          <a href="index.html" class="btn-resume">Back to Home</a>
+        </div>
+      </main>
+
+      <footer>© 2025 Varsha Hegde | Grace in Dance, Logic in Code.</footer>
+    </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("O28W5IkGUQs58aK6D"); // 🔹 Replace with your EmailJS public key
+      })();
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          emailjs.sendForm("service_olrucsh", "template_qkn05bd", this).then(
+            function () {
+              alert("Message sent successfully!");
+            },
+            function (error) {
+              alert("Failed to send message. Please try again later.");
+              console.log("FAILED...", error);
+            }
+          );
+        });
+    </script>
+  </body>
+</html>
